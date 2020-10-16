@@ -142,11 +142,12 @@ end
 ------------------------------------------------------------------------
 
 function M.on_InsertCharPre()
-  if vim.v.char ~= ' ' then
+    -- TODO maybe the cause of this problem is fuzzy matching autocomplete?
+    if vim.v.char == nil then return end
+    if vim.v.char == ' ' then return end
     manager.insertChar = true
     manager.textHover = true
     manager.selected = -1
-  end
 end
 
 function M.on_InsertLeave()
