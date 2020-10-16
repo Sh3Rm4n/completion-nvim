@@ -142,9 +142,11 @@ end
 ------------------------------------------------------------------------
 
 function M.on_InsertCharPre()
-  manager.insertChar = true
-  manager.textHover = true
-  manager.selected = -1
+  if vim.v.char ~= ' ' then
+    manager.insertChar = true
+    manager.textHover = true
+    manager.selected = -1
+  end
 end
 
 function M.on_InsertLeave()
